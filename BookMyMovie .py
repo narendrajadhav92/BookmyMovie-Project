@@ -113,7 +113,7 @@ def timing():
     
     
 def mysql_update():
-    mydb = conn.connect(host = 'localhost',user = 'root' ,passwd = "8899" )
+    mydb = conn.connect(host = 'localhost',user = 'root' ,passwd = "passwd" )
     cursor = mydb.cursor()
     cursor.execute("CREATE DATABASE IF NOT EXISTS bookmymovie ;")
     cursor.execute('use bookmymovie;')
