@@ -133,6 +133,21 @@ def mysql_update():
     mydb.commit()
     print('SQL Updated')
 
+    
+'''
+   # Triggers added for replication of data in backup table
+delimiter $$
+drop trigger if exists bmm_after_insert;
+create trigger bmm_after_insert
+	after insert on bookmymovie.bookings
+    for each row
+begin
+	insert into backup.backup_bmm  ( booking_id ,  location  , movie, screen   ,  theatre, timing , seats )
+    values  ( new.booking_id, new.location, new.movie, new.screen, new.theatre,  new.timing, new.seats );
+end $$
+delimiter ;
+
+'''
 
 
 BookMyMovie()
